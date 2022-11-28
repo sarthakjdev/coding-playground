@@ -1,22 +1,33 @@
 {
   "name": "coding-playground",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "install": "npm run install:server && npm run install:client",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev:db": "cd server && npm run dev:db",
+    "dev": "npm run dev:server && npm run dev:client",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "lint:server": "cd servr && npm run lint",
+    "lint:client": "cd client && npm run lint",
+    "lint": "npm run lint:server && npm run lint:client",
+    "lint:fix": "cd server && npm run lint:fix",
+    "start:server": "cd server && npm run start",
+    "start:client": "cd client && npm run start",
+    "start": "npm run start:client && npm run start:server",
+    "prepare": ""
   },
-  "dependencies": {
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "eslint": "8.27.0",
-    "eslint-config-next": "13.0.3",
-    "next": "13.0.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.3"
+  "keywords": [],
+  "author": {
+    "name": "Sarthak Jain",
+    "email": "contact.sarthakjain@gmail.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^8.0.2"
   }
 }
