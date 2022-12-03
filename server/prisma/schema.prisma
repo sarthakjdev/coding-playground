@@ -10,12 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  email       String       @unique @id
+  name        String?
+  password    String?
+  authToken   String?
+  playgrounds Playground[]
 
-  @@map("users")
+  createAt DateTime? @default(now())
+  updateAt DateTime? @default(now()) @updatedAt
+
+  @@map("user")
 }
 
+model Playground {
+  id          Int                   @id @unique @default(autoincrement())
+  type        TYPE_OF_PLAYGROUND
+  containerId String                @unique
+  container   PlaygroundContainers? @relation(fields: [containerId], references: [id])
+  userId      String?
+  user        User?                 @relation(references: [email], fields: [userId])
+  createAt    DateTime?             @default(now())
+  updateAt    DateTime?             @default(now()) @updatedAt
+
+  @@map("playground")
+}
+
+model PlaygroundContainers {
+  id         String      @id
+  playground Playground?
+
+  createAt DateTime? @default(now())
+  updateAt DateTime? @default(now()) @updatedAt
+
+  @@map("playground-container")
+}
+
+enum TYPE_OF_PLAYGROUND {
+  NODE
+  REACT
+  HTML_CSS
+}

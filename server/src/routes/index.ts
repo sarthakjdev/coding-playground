@@ -1,8 +1,8 @@
 import express from 'express'
-import basicRouter from '@routes/basic'
+import playgroundRouter from '@routes/playground'
 
 const router = express.Router()
 
-router.use('/basic', basicRouter)
+router.use('/playground', playgroundRouter)
 
 export default router

@@ -19,7 +19,8 @@
     "start:server": "cd server && npm run start",
     "start:client": "cd client && npm run start",
     "start": "npm run start:client && npm run start:server",
-    "prepare": ""
+    "db-migrate": "cd server && npx prisma generate && npx prisma migrate dev",
+    "db-generate": "cd server && npx prisma generate"
   },
   "keywords": [],
   "author": {
